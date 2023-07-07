@@ -16,12 +16,14 @@ Using Python, this project tries to gather the data from the source in an ethica
 ## Airflow DAG
 Currently, we are using a very simple DAG process to get the data daily at 2 PM WIB. Hopefully, this can be improved to have an error message, a cleaning process, and also database checking to avoid duplication.
 
-![image](https://github.com/monsterikan/dkicommodityprice/assets/57279779/70945290-5d5a-499f-b46b-95a2f7fcb388)
+![airflow-dag1](https://github.com/monsterikan/dkicommodityprice/assets/57279779/b2a1e858-8c0a-4a99-a991-aeab7b96874e)
+
 
 ## Data Pipeline
 The overall system design is as follows. 
 
-![DE-Project-Pangan](https://github.com/monsterikan/dkicommodityprice/assets/57279779/2205f975-fcd1-4128-9c8a-ce97b8c386e3)
+![flo2](https://github.com/monsterikan/dkicommodityprice/assets/57279779/4eb74abd-8e3a-4b3d-9afd-fc780cfc67a5)
+
 
 ## Quickstart
 <details>
