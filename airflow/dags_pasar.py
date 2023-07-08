@@ -21,7 +21,7 @@ default_args = {
 dag = DAG(
     'run_market_price',
     default_args=default_args,
-    schedule_interval='0 6 * * *',  # Run daily at 1 PM (13:00)
+    schedule_interval='0 6 * * *',  # Run daily at 2 PM (14:00) WIB
 )
 
 with dag:
