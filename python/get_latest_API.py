@@ -27,7 +27,7 @@ def getjson():
         transformed_date = year + month + date
         return transformed_date
     
-    # Existing dataframe or list of IDs
+    # List of Market ID
     # df_list = pd.DataFrame({'idlist': [7,8,36,37,38,39,41,3,4,21,22,23,24,25,26,27,40,9,10,28,29,30,31,32,33,34,35,1,11,12,13,14,15,16,17,18,19,20,47,48,5,6,42,43,44,45,46,49]})
     
     df_list = pd.DataFrame({'idlist': [7,8,36,37,38,39,41,3,4,21,22,23,24,25,26,27,40,9,10,28,29,30,31,32,33,34,35,1,11,12,13,14,15,16,17,18,19,20,47,48,5,6,42,43,44,45,46,49]})
@@ -35,12 +35,12 @@ def getjson():
     
     
     def process_urls(df_list, year):
-        dfs = []  # List to store the separate dataframes
+        dfs = []  # Storing different dataframe
         mnth = datetime.datetime.now().month
         
         for index, row in df_list.iterrows():
             id_param = row['idlist']
-            df_long_list = []  # List to store the individual market ID dataframes
+            df_long_list = []  # List to store market ID df
             
             
             url = f'https://infopangan.jakarta.go.id/api/price/series_by_location?public=1&type=market&lid={id_param}&m={mnth}&y={year}'
@@ -142,17 +142,16 @@ def getjson():
                 df_long_list.append(df_long)  # Append the dataframe to the list
             
             if len(df_long_list) > 0:
-                # Create a separate dataframe for each market ID
                 df_combined = pd.concat(df_long_list)
-                dfs.append(df_combined)  # Append the dataframe to the list
+                dfs.append(df_combined)  # Append df
         
         return dfs
     
     
-    # Call the function to process the URLs
+    # Function to process
     dfs = process_urls(df_list, year)
     
-    # Access each dataframe individually
+    # Dataframe merging
     merged_df = pd.concat(dfs, ignore_index=True)
     merged_df = merged_df[['MarketID', 'CommodityID', 'Date', 'Price']]
     merged_df = merged_df[~merged_df['Date'].str.contains('series', case=False)]
@@ -160,6 +159,8 @@ def getjson():
     
     fil_df = merged_df.merge(last_dates, on=['MarketID', 'Date'])
     
+
+    # Connecting MySQL
     
     """
     MySQL Connection
@@ -177,7 +178,7 @@ def getjson():
     
     connection = engine.connect()
     
-    table_name = 'allpasar'  # Replace with the desired table name
+    table_name = 'allpasar' 
     fil_df.to_sql(table_name, con=engine, if_exists='append', index=False)
     
     connection.close()
