@@ -28,6 +28,10 @@ Currently, we are using a very simple DAG process to get the data daily at 2 PM 
 
 ![airflow-dag1](https://github.com/monsterikan/dkicommodityprice/assets/57279779/7ae7b112-5181-404a-8e8d-8c5a3f338e9f)
 
+## Dashboard
+![dashboardash](https://github.com/monsterikan/dkicommodityprice/assets/57279779/f117dee3-d622-4026-9862-19305d733af7)
+
+
 ## Quickstart
 <details>
   <summary>Show / Hide</summary>
