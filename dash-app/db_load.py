@@ -11,9 +11,9 @@ from sqlalchemy import create_engine
 def db_load_pasardki():
     # Step 2: Create SQLAlchemy engine
     engine = create_engine("mysql+mysqlconnector://{user}:{pw}@{host}/{db}"
-                           .format(user="mikael",
-                                   pw="Peipei8!",
-                                   host="38.47.180.145",
+                           .format(user="xxx",
+                                   pw="xxx",
+                                   host="xxx",
                                    db="pasardkidb"))
 
     # Step 3: Establish database connection
